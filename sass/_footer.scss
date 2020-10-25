@@ -1,0 +1,49 @@
+.footer {
+  background-color: $color-secondary;
+  grid-column: full-start / full-end;
+  padding: 6rem;
+}
+
+.nav {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  gap: 2rem;
+  align-items: center;
+
+  /* At different width of viewport, we change the column numbers. This work well when we have even number of items using the auto-implicit-row-placement algorithm. */
+  @media only screen and (max-width: $bp-large) {
+    grid-template-columns: repeat(3, minmax(15rem, 1fr));
+  }
+
+  @media only screen and (max-width: $bp-small) {
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  }
+
+  &__link:link,
+  &__link:visited {
+    font-family: $font-display;
+    text-decoration: none;
+    color: #fff;
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 1rem;
+    //Why need to set to block for it to work? I think is it because anchor tag is inline element. But the default behavior should be stretch right?
+    display: block;
+    transition: all 0.2s;
+  }
+
+  &__link:hover,
+  &__link:active {
+    background-color: rgba(#fff, 0.1);
+    transform: translateY(-3px);
+  }
+}
+
+.copyright {
+  font-size: 1.4rem;
+  color: $color-grey-light-2;
+  text-align: center;
+  margin-top: 6rem;
+}

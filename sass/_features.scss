@@ -1,0 +1,37 @@
+.features {
+  grid-column: center-start / center-end;
+
+  margin: 15rem 0;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+  gap: 6rem;
+  /* Why put this here instead in .feature???
+  Because .feature grid items will depend on its parent grid, which is .features and this parent has stretch value by default for align-items. So no matter how you align items in .features, it will always be stretched to accommodate its whole area.
+  This explained well: https://www.udemy.com/course/advanced-css-and-sass/learn/lecture/8859716#questions/5367886 */
+  align-items: start;
+
+  @media (max-width: $bp-medium) {
+    margin: 8rem auto;
+  }
+}
+
+.feature {
+  display: grid;
+  grid-template-columns: min-content 1fr;
+  row-gap: 1.5rem;
+  column-gap: 2.5rem;
+
+  &__icon {
+    fill: $color-primary;
+    width: 4.5rem;
+    height: 4.5rem;
+    // NOTICE: -1 ONLY specify the end of EXPLICIT grid, NOT implicit grid.
+    grid-row: 1 / span 2;
+    transform: translateY(-1rem);
+  }
+
+  &__text {
+    font-size: 1.7rem;
+  }
+}

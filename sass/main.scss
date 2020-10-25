@@ -1,0 +1,15 @@
+/* Shorthand to importing all files in Sass folders with @import */
+// @import "base/*"     // import all the files in the base folder.
+// @import "base/**/*"  // import all the files in the base tree, like subfolders and files.
+
+@import "base";
+@import "typography";
+
+@import "sidebar";
+@import "header";
+@import "realtors";
+@import "features";
+@import "story";
+@import "homes";
+@import "gallery";
+@import "footer";

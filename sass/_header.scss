@@ -1,0 +1,75 @@
+.header {
+  // background-color: #aaa;
+  grid-column: full-start / col-end 6;
+  background-image: linear-gradient(rgba($color-secondary, 0.93), rgba($color-secondary, 0.93)), url(../img/hero.jpeg);
+  /* Setting cover will scale the background image to be as large as possible so that the background area is completely covered by the background image. Some parts of the background image may not be in view within the background positioning area.
+  stackoverflow explained well the difference between contain & cover here:
+  https://stackoverflow.com/questions/27939971/difference-between-background-sizecover-and-background-sizecontain */
+  background-size: cover;
+  background-position: center;
+  padding: 8rem;
+  padding-top: 4rem;
+  display: grid;
+  /* Here we don't want the element's height between 6rem  (and not less) and the height that it need to occupy (which might be more than 6rem ). */
+  grid-template-rows: 1fr min-content minmax(6rem, min-content) 1fr;
+  /* This is to make the logo center to the h1 tagline, not to its container width.
+  We use minmax() function here for responsive purpose.
+  Notice we also can use min or max-content inside minmax() function. */
+  grid-template-columns: minmax(min-content, max-content);
+  row-gap: 1.5rem;
+  justify-content: center;
+
+  @media (max-width: $bp-medium) {
+    /* This is same as grid-column: full-start / full-end; */
+    grid-column: 1 / -1;
+  }
+
+  @media (max-width: $bp-small) {
+    padding: 5rem;
+  }
+
+  &__logo {
+    height: 3rem;
+    justify-self: center;
+  }
+
+  &__btn {
+    align-self: start;
+    justify-self: start;
+  }
+
+  &__seenon-text {
+    font-size: 1.6rem;
+    color: $color-grey-light-2;
+    display: grid;
+    grid-template-columns: 1fr max-content 1fr;
+    align-items: center;
+    column-gap: 1.5rem;
+
+    &::before,
+    &::after {
+      content: '';
+      height: 1px;
+      /* We set to block because pseudo element is inline element */
+      display: block;
+      background-color: currentColor;
+    }
+  }
+
+  &__seenon-logos {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 1.2rem;
+    justify-items: center;
+    align-items: center;
+
+    img {
+      /* Here we specify the height can be at max 2.5rem, but even more, it can be scaled down if necessary. */
+      max-height: 2.5rem;
+      /* Then we have the width react accordingly to the height and it can be scaled down if necessary. The reason we want to specify here because IF the width of image at certain view port has corresponding height lower than 2.5rem, then the lower value from the width will take into account while maintaining the aspect ratio. */
+      max-width: 100%;
+      /* Brightness can apply effect for brightness just the way like our smartphone. */
+      filter: brightness(70%);
+    }
+  }
+}
